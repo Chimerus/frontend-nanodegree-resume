@@ -77,6 +77,35 @@ var education = {
   ]
 };
 
+$('#header').append(HTMLheaderName);
+
+if (bio.skills.length>0){
+	$('#header').append(HTMLskillsStart);
+
+	for(var idx=0;idx<bio.skills.length+1;idx++){
+	var formattedSkill = HTMLskills.replace("%data%", bio.skills[idx]);
+	$('#skills').append(formattedSkill);
+	}
+}
+
+function displayWork() {
+for(jobs in work.jobs) {
+	$('#mworkExperience').append(HTMLworkStart);
+
+	var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs [job].employer);
+	var formattedTitle = HTMLworkTitle.replace("%data%", work.jobs[job].title);
+	var formattedEmployerTitle = formattedEmployer+formattedTitle;
+
+	$(".work-entry:last").append(formattedEmployerTitle);
+
+	var formattedDates = HTMLworkDates.replace("%data%", work.jobs[job].dates);
+	$(".work-entry:last").append(formattedDates);
+
+	var formattedDescription = HTMLworkDescripton.replace("%data%", work.jobs[job].description);
+	$(".work-entry:last").append(formattedDescription);
+	}
+}
+displayWork();
 /*
 $('#header').append(formattedName);
 $('#header').append(formattedRole);
